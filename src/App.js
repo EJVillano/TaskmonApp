@@ -12,7 +12,7 @@ function App() {
    <Router>
     <Container fluid>
       <Routes>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/" element={<Login/>}/>
       </Routes>
     </Container>
    </Router>
