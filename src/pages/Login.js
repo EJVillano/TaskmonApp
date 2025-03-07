@@ -13,7 +13,7 @@ export default function Login() {
     const authenticate = (e) => {
         e.preventDefault();
     
-        axios.post('http://localhost:4000/user/login', {
+        axios.post('http://localhost:4000/users/login', {
             username: username,
             password: password
         })
@@ -31,7 +31,7 @@ export default function Login() {
                 console.error('Error Response:', error.response);
                 if (error.response.data && error.response.data.message) {
                     console.log(error.response.data.message); // Server error message
-                    
+                    // this where to put swal 
                     if (error.response.data.message === "Username and password do not match") {
                         console.log("Incorrect Username or Password");
                     } else if (error.response.data.message === "User not found") {
