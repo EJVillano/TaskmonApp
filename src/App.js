@@ -7,6 +7,7 @@ import axios from 'axios'
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Route, Routes } from 'react-router-dom';
 import Login from './pages/Login';
+import Home from './pages/Home'
 
 import  { UserProvider } from './UserContext'
 
@@ -64,6 +65,8 @@ function App() {
         <Container fluid>
           <Routes>
             <Route path="/" element={<Login/>}/>
+            <Route path="/Home" element={<Home/>}/>
+            
           </Routes>
         </Container>
       </Router>
