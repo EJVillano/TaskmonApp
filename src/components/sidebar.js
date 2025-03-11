@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, Offcanvas, Nav, Row, Col } from 'react-bootstrap';
+import UserContext from '../UserContext';
 
 export default function Sidebar(){
     
@@ -8,6 +9,10 @@ export default function Sidebar(){
     const handleShow = () => setShow(true)
 
     const handleClose = () => setShow(false)
+
+    const username = useContext(UserContext).user.username
+
+    console.log(username)
 
     return(
         <>
@@ -27,12 +32,16 @@ export default function Sidebar(){
                 </Row>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
-                <Nav className="flex-column">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#services">Services</Nav.Link>
-                    <Nav.Link href="#about">About</Nav.Link>
-                    <Nav.Link href="#contact">Contact</Nav.Link>
-                </Nav>
+                    <Row className='justified-content-center'>
+                        <h1>{username}</h1>
+
+                    </Row>
+                    <Nav className="flex-column">
+                        <Nav.Link href="#home">Home</Nav.Link>
+                        <Nav.Link href="#services">Services</Nav.Link>
+                        <Nav.Link href="#about">About</Nav.Link>
+                        <Nav.Link href="#contact">Contact</Nav.Link>
+                    </Nav>
                 </Offcanvas.Body>
       </Offcanvas>
         </>

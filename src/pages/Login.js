@@ -1,7 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import axios from 'axios'
-
+import { Navigate } from "react-router";
+import UserContext from "../UserContext";
 
 
 
@@ -22,6 +23,7 @@ export default function Login() {
             if (res.data && res.data.access) {
                 localStorage.setItem('token', res.data.access);
                 console.log(`Token: ${res.data.access}`);
+
             } 
         })
         .catch(error => {
@@ -62,9 +64,13 @@ export default function Login() {
     }, [username, password]);
     
 
-
+    const activeUser =useContext(UserContext).user.username
+    console.log(activeUser)
 
     return(
+        activeUser !== null ? 
+        <Navigate to='/Home'/> 
+        :
         <Container fluid>
             <Row>
                 <Col sm={6} className="">

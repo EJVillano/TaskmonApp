@@ -13,7 +13,7 @@ import  { UserProvider } from './UserContext'
 
 function App() {
 
-  const [user, setUser] = useState({ id: null, isFirstimer: null})
+  const [user, setUser] = useState({ id: null, isFirstimer: null, username: null})
 
   const unsetUser = () => {
     localStorage.clear();
@@ -26,16 +26,18 @@ function App() {
       }
     })
     .then(res => {
-      console.log(res.data)
+      // console.log(res.data)
       if (typeof res.data.user !== "undefined"){
         setUser({
           id: res.data.user._id,
-          isFirstimer: res.data.user.isFirstimer
+          isFirstimer: res.data.user.isFirstimer,
+          username: res.data.user.username
         })
       }else{
         setUser({
           id: null,
-          isFirstimer: null
+          isFirstimer: null,
+          username: null
         })
       }
     })
